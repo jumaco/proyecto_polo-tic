@@ -23,5 +23,13 @@
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/templates/app" />
+        <option value="$MODULE_DIR$/templates/autenticacion" />
+        <option value="$MODULE_DIR$/templates/layouts" />
+      </list>
+    </option>
   </component>
 </module>

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import *
+from .views import index
 
 urlpatterns = [
-    path('hola-mundo/', hola, name="hola"),
+    path('', index, name="app"),
 ]

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Registro{%endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" action="" class="mt-2" autocomplete="off">
+        {% csrf_token %}
+        {{ formulario|crispy }}
+        <button type="submit" class="btn btn-success">Crear cuenta</button>
+    </form>
+{% endblock %}
