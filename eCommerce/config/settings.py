@@ -142,3 +142,7 @@ MESSAGE_TAGS = {
     message_constants.WARNING: 'warning',
 
 }
+
+# URLS PARA ARCHIVOS MEDIA DE BASE DE DATOS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

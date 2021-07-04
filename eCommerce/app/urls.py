@@ -5,4 +5,3 @@ urlpatterns = [
     path('', index, name="app"),
     path('listado/', listado_productos, name='listado_productos')
 ]
-
