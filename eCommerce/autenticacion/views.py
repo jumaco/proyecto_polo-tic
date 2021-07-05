@@ -15,7 +15,7 @@ def acceder(request):
             if usuario is not None:
                 login(request, usuario)
                 messages.success(request, F"Bievenid@ nuevamente a la plataforma {nombre_usuario}")
-                return redirect("app")
+                return redirect("listado_productos")
             else:
                 messages.error(request, "Los datos son incorrectos")
         else:
@@ -39,7 +39,7 @@ class vistaRegistro(View):
             nombre = form.cleaned_data.get("username")
             messages.success(request, F"Bievenid@ a la plataforma {nombre}")
             login(request, usuario)
-            return redirect("app")
+            return redirect("listado_productos")
         else:
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])

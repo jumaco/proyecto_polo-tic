@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container-fluid">
+        <form method="POST" action="" class="mt-3" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+
+{% endblock %}

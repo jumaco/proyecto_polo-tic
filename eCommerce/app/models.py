@@ -21,7 +21,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300)
     slug = models.SlugField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='productos/', blank=True)
+    image = models.ImageField(upload_to='productos/', blank=False)
     excerpt = models.TextField(max_length=200, verbose_name='Extracto')
     detail = models.TextField(max_length=1000, verbose_name='Informacíon del producto')
     price = models.FloatField()
