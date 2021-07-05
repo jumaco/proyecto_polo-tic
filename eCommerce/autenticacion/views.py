@@ -25,7 +25,7 @@ def acceder(request):
     return render(request, 'acceder.html', {"form": form})
 
 
-class vistaRegistro(View):
+class VistaRegistro(View):
     # noinspection PyMethodMayBeStatic
     def get(self, request):
         form = UserCreationForm()
@@ -44,6 +44,7 @@ class vistaRegistro(View):
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
         return render(request, "registro.html", {"formulario": form})
+
 
 def salir(request):
     logout(request)

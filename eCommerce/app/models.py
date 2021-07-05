@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 # Modelo de Categoria
@@ -26,6 +27,11 @@ class Product(models.Model):
     detail = models.TextField(max_length=1000, verbose_name='Informacíon del producto')
     price = models.FloatField()
     available = models.BooleanField(default=True)
+
+    def delete(self, *args, **kwargs):
+        if os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        super(Product, self).delete(*args, **kwargs)
 
     def __str__(self):
         return self.name

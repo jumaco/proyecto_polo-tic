@@ -7,24 +7,27 @@
             <div class="card-deck">
 				{% for product in products|slice:":3" %}
 					<div class="card">
-						<img src="{{ product.image.url }}" class="card-img-top" alt="{{product.name}}">
+						<img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
 						<div class="card-body">
 							<h5 class="card-title">{{product.name}}</h5>
-							<p class="card-text">{{ product.excerpt}}</p>
+							<p class="card-text">{{product.excerpt}}</p>
 						</div>
-						<div class="card-footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						</div>
+                        <div class="card-footer" style="display: grid;">
+                            <small class="text-muted"><h5 class="d-inline-block">${{product.price}}</h5></small>
+                            {% if request.user.is_staff %}
+                                <a href="#" class="btn btn-danger px-1">Eliminar producto</a>
+                            {% endif %}
+                        </div>
 					</div>
 
 				{% endfor %}
 			</div>
 
 			<ul class="list-group list-group-flush">
-				{% for product in products|slice:":4" %}
+				{% for product in products|slice:":6" %}
 					<li class="list-group-item">
                         <h5 class="card-title">{{product.name}}</h5>
-						<p class="card-text">{{ product.excerpt}}</p>
+						<p class="card-text">{{ product.excerpt}} <span><small class="text-muted">${{product.price}}</small></span></p>
                     </li>
 				{% endfor %}
 			</ul>
