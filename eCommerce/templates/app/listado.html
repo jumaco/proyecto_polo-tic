@@ -31,16 +31,30 @@
         {% endfor %}
     </div>
     <div class="my-2 px-3 pt-2 rounded backg">
-        <h3 class="">Productos</h3>
+        <h3 class="">Más productos</h3>
         <ul class="list-group list-group-flush rounded">
-            {% for product in products|slice:":7" %}
-                <li class="list-group-item backg d-flex justify-content-between ">
+            {% for product in products|slice:":10" %}
+                {% if forloop.counter > 3 %}
+                <li class="list-group-item backg d-flex justify-content-between align-items-center">
                     <div>
                         <h5>{{product.name}}</h5>
                         <p class="card-text text-muted">{{ product.excerpt}}</p>
                     </div>
+                    <div>
                     <strong>${{product.price}}</strong>
+                     {% if request.user.is_staff %}
+                        <a href="{% url 'eliminar_producto' product.id %}" class="btn btn-danger px-1">Eliminar producto</a>
+                        <a href="{% url 'editar_producto' product.id %}" class="btn btn-warning my-1 px-1">Editar producto</a>
+                    {% else %}
+                        {% if product.available %}
+                            <a href="{% url 'carrito:agregar' product.id %}" class="btn btn-success px-1">Agregar al carrito</a>
+                        {% else %}
+                            <a href="#" class="btn btn-success px-1 disabled" >Producto sin Stock</a>
+                        {% endif %}
+                    {% endif %}
+                    </div>
                 </li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

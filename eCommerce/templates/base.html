@@ -56,7 +56,9 @@
                             </a>
                             <div class="dropdown-menu backg" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="#">Action</a>
+                                {% for category in categories %}
+                                <a class="dropdown-item" href="#">{{category.name}}</a>
+                                {% endfor %}
 
                             </div>
                         </li>
@@ -78,10 +80,12 @@
                         </li>
                         {% endif %}
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+<!-- Buscador -->
+                    <form class="form-inline my-2 my-lg-0" method="get">
+                       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
                        <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
                     </form>
+
                 </div>
             </nav>
         </header>

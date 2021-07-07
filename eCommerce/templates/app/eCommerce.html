@@ -22,7 +22,7 @@
                         <a href="{% url 'editar_producto' product.id %}" class="btn btn-warning my-1 px-1">Editar producto</a>
                     {% else %}
                         {% if product.available %}
-                            <a href="#" class="btn btn-success px-1">Agregar al carrito</a>
+                            <a href="{% url 'carrito:agregar' product.id %}" class="btn btn-success px-1">Agregar al carrito</a>
                         {% else %}
                             <a href="#" class="btn btn-success px-1 disabled" >Producto sin Stock</a>
                         {% endif %}

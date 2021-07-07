@@ -10,4 +10,6 @@ urlpatterns = [
     path('editar/producto/<int:product_id>', editar_producto, name='editar_producto'),
     path('acercade/', acercade, name='acercade'),
     path('contacto/', contacto, name='contacto'),
+    path('contacto/', contacto, name='contacto'),
+
 ]

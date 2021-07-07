@@ -46,11 +46,14 @@
         <tfoot>
             <tr>
                 {% if request.session.carrito.items %}
-                <td colspan="2">
+                <td>
                     TOTAL: ${{ monto }} <br>PRODUCTOS: {{ cantidad_pruductos }}u.
                 </td>
-                <td colspan="2">
-                    <a href="{% url 'carrito:vaciar' %}" class="btn btn-lg btn-warning">Vaciar Carrito</a>
+                <td colspan="2" class="text-center">
+                    <a href="#" class="btn btn-lg btn-success">Finalizar Compra</a>
+                </td>
+                <td class="text-right" >
+                    <a href="{% url 'carrito:vaciar' %}" class="btn btn-warning">Vaciar Carrito</a>
                 </td>
                 {% endif %}
             </tr>
