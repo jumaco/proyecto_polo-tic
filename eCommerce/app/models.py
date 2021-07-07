@@ -4,8 +4,8 @@ import os
 
 # Modelo de Categoria
 class Category(models.Model):
-    name = models.CharField(max_length=300)
-    featured = models.BooleanField(default=False)
+    name = models.CharField(max_length=300, verbose_name='Descripción')
+    featured = models.BooleanField(default=False, verbose_name='Destacado')
 
     def __str__(self):
         return self.name
@@ -19,14 +19,14 @@ class Category(models.Model):
 
 # Modelo de Producto
 class Product(models.Model):
-    name = models.CharField(max_length=300)
+    name = models.CharField(max_length=300, verbose_name='Nombre')
     slug = models.SlugField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='productos/', blank=False)
-    excerpt = models.TextField(max_length=200, verbose_name='Extracto')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Categoría')
+    image = models.ImageField(upload_to='productos/', blank=False, verbose_name='Imagen')
+    excerpt = models.TextField(max_length=200, verbose_name='Resumen')
     detail = models.TextField(max_length=1000, verbose_name='Informacíon del producto')
-    price = models.FloatField()
-    available = models.BooleanField(default=True)
+    price = models.FloatField(verbose_name='Precio')
+    available = models.BooleanField(default=True, verbose_name='Disponible')
 
     def delete(self, *args, **kwargs):
         if os.path.isfile(self.image.path):

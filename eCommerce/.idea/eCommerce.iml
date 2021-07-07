@@ -29,6 +29,7 @@
         <option value="$MODULE_DIR$/templates/app" />
         <option value="$MODULE_DIR$/templates/autenticacion" />
         <option value="$MODULE_DIR$/templates/layouts" />
+        <option value="$MODULE_DIR$/templates/carrito" />
       </list>
     </option>
   </component>

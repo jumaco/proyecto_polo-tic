@@ -6,9 +6,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="POST" action="" class="mt-2" autocomplete="off">
-        {% csrf_token %}
-        {{ formulario|crispy }}
-        <button type="submit" class="btn btn-success">Crear cuenta</button>
-    </form>
+    <div class="d-flex justify-content-center" >
+
+            <form method="POST" action="" class="col-sm-8 col-12 m-3 p-3 rounded backg" autocomplete="off">
+                {% csrf_token %}
+                {{ formulario|crispy }}
+                <button type="submit" class="btn btn-success">Crear cuenta</button>
+            </form>
+
+    </div>
 {% endblock %}

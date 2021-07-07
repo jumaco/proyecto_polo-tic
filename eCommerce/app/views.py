@@ -8,6 +8,14 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
+def acercade(request):
+    return render(request, "acercade.html")
+
+
+def contacto(request):
+    return render(request, "contacto.html")
+
+
 def index(request):
     list_products = Product.objects.all()
     paginador = Paginator(list_products, 6)
@@ -15,7 +23,8 @@ def index(request):
     products = paginador.get_page(pagina)
     pagina_actual = int(pagina)
     paginas = range(1, products.paginator.num_pages + 1)
-    return render(request, "eCommerce.html", {"products": products, "paginas": paginas, "pagina_actual": pagina_actual})
+    contexto = {"products": products, "paginas": paginas, "pagina_actual": pagina_actual}
+    return render(request, "eCommerce.html", contexto)
 
 
 def listado_productos(request):
@@ -59,15 +68,24 @@ def eliminar_producto(request, product_id):
         product = Product.objects.get(pk=product_id)
     except Product.DoesNotExist:
         messages.error(request, "El producto que quiere eliminar no existe")
-        return redirect("app")
+        return redirect("listado_productos")
 
     product.delete()
     messages.success(request, f"El producto {product.name} ha sido removido")
-    return redirect("app")
+    return redirect("listado_productos")
 
 
-'''#linea 60
-    if request.user != request.is_superuser:
-        messages.error(request, "No tienes privilegios para esto")
-        return redirect("app")
-'''
+@staff_member_required(login_url='/accoubts/acceder')
+def editar_producto(request, product_id):
+    producto = Product.objects.get(id=product_id)
+    if request.method == 'GET':
+        form = FormularioProducto(instance=producto)
+        contexto = {'form': form}
+    else:
+        form = FormularioProducto(request.POST, instance=producto)
+        contexto = {'form': form}
+        if form.is_valid():
+            form.save()
+            return redirect("listado_productos")
+
+    return render(request, 'agregar_producto.html', contexto)

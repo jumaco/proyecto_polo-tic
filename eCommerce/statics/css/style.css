@@ -11,3 +11,24 @@
     width: 100%;
     height: 100%;
 }
+.bg {
+    background-image: url(../images/sinFisurasPatron.jpg);
+    height: 100%;
+}
+.backg {
+    background-color: #d7fbc8;
+    opacity: 90%;
+}
+textarea.textarea {
+    resize: none;
+}
+.navbar-toggler-icono {
+    display: block;
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+    /*content: url(../images/1432575.png);*/
+    mask: url(../images/1432575.png);
+    mask-size: cover;
+    background: #34ce57;
+}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Carrito{%endblock %}
+
+{% block content %}
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th colspan="4" class="text-center">
+                    Carrito de compras
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% if request.session.carrito.items %}
+                {% for key, value in request.session.carrito.items %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ value.nombre }}</td>
+                        <td>{{ value.cantidad }}</td>
+                        <td>
+                            <a href="{% url 'carrito:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                            <a href="{% url 'carrito:restar' value.producto_id %}" class="btn btn-sm btn-success">-</a>
+                            ${{ value.precio }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">
+                        <div class="alert alert-danger text-center mb-0" >
+                            SIN PRUDUCTOS
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+
+        </tbody>
+        <tfoot>
+            <tr>
+                {% if request.session.carrito.items %}
+                <td colspan="2">
+                    TOTAL: ${{ monto }} <br>PRODUCTOS: {{ cantidad_pruductos }}u.
+                </td>
+                <td colspan="2">
+                    <a href="{% url 'carrito:vaciar' %}" class="btn btn-lg btn-warning">Vaciar Carrito</a>
+                </td>
+                {% endif %}
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}

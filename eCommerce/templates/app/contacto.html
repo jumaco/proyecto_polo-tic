@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Tienda{%endblock %}
+
+{% block content %}
+
+
+            <div class="modal-dialog backg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Contáctanos</h2>
+
+                    </div>
+
+                    <div class="modal-body backg">
+                        <p class="statusMsg"></p>
+                        <form role="form" novalidate>
+
+                            <div class="form-group">
+                                <label for="inputName">¿Cómo te llamas?</label>
+                                <input type="text" class="form-control" name="fullname" autocomplete="off" placeholder="Jardani Jovonovich" id="inputName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail">E-mail</label>
+                                <input type="email" class="form-control" name="email" id="inputEmail" autocomplete="off" placeholder="johnwick@continental.com">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="inputMessage">Consulta, Comenta, Critica</label>
+                                <textarea class="form-control" name="message" id="inputMessage" autocomplete="off" rows="3" ></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-lg">Cerrar</button>
+                                <button type="button" class="btn btn-lg submitBtn">Enviar</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+{% endblock %}
